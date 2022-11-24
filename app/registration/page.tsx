@@ -1,6 +1,6 @@
 import React from "react";
 
-function RegistrationForm(): JSX.Element {
+function RegistrationPage(): JSX.Element {
   return (
     <form>
       <label>Email</label>
@@ -14,4 +14,4 @@ function RegistrationForm(): JSX.Element {
   );
 }
 
-export default RegistrationForm;
+export default RegistrationPage;
