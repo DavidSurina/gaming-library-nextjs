@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  input {
+    @apply border border-darkGrey rounded p-1 bg-dimmedGrey text-contrastText;
+  }
+  label {
+    @apply mt-3 font-bold text-dimmedGrey;
+  }
+  form {
+    @apply w-3/6 m-auto flex flex-col justify-center;
+  }
+  button {
+    @apply rounded-lg;
+  }
+}
+
+@layer components {
+}
+
+.front-page_container {
+  @apply flex items-center justify-center m-auto;
+}
