@@ -33,9 +33,11 @@ function RegistrationPage(): JSX.Element {
       {errors?.username?.type === "required" && <span>Email is required</span>}
       <label>Password</label>
       <input
-        {...register("password", { required: true })}
+        {...register("password", { required: true, min: 8, max: 32 })}
         type="password"
         aria-label="password"
+        min={8}
+        max={32}
       />
       <label>Repeat password</label>
       <input
