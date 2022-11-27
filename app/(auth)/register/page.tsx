@@ -1,17 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-function RegistrationPage(): JSX.Element {
+function RegisterPage(): JSX.Element {
   const {
     handleSubmit,
     register,
     formState: { isValid, errors },
   } = useForm({ mode: "onChange" });
 
-  const handleRegistration = () => console.log("registered");
+  const handleRegister = () => console.log("registered");
 
   return (
-    <form onSubmit={handleSubmit(handleRegistration)}>
+    <form onSubmit={handleSubmit(handleRegister)}>
       <label>Email</label>
       <input
         {...register("email", { required: true })}
@@ -52,4 +52,4 @@ function RegistrationPage(): JSX.Element {
   );
 }
 
-export default RegistrationPage;
+export default RegisterPage;
