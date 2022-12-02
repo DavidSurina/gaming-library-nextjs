@@ -8,7 +8,7 @@ function RegisterPage(): JSX.Element {
     formState: { isValid, errors },
   } = useForm({ mode: "onChange" });
 
-  const handleRegister = () => console.log("registered");
+  const handleRegister = async () => {};
 
   return (
     <form onSubmit={handleSubmit(handleRegister)}>

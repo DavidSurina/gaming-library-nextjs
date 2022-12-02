@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 function LoginPage(): JSX.Element {
@@ -23,6 +24,9 @@ function LoginPage(): JSX.Element {
       <button className="front-page_btn" type="submit">
         Login
       </button>
+      <span>
+        Don't have and account ? <Link href="/register">Register</Link>
+      </span>
     </form>
   );
 }
