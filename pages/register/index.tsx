@@ -1,17 +1,35 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../firebase/clientApp";
 
 function RegisterPage(): JSX.Element {
+  const auth = getAuth(app);
   const {
     handleSubmit,
     register,
     formState: { isValid, errors },
   } = useForm({ mode: "onChange" });
 
-  const handleRegister = async () => {};
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    console.log(data);
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+        // ..
+      });
+  };
 
   return (
-    <form onSubmit={handleSubmit(handleRegister)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <label>Email</label>
       <input
         {...register("email", { required: true })}
@@ -19,14 +37,6 @@ function RegisterPage(): JSX.Element {
         aria-label="email"
       />
       {errors?.email?.type === "required" && <span>Email is required</span>}
-      <label>Username</label>
-      <input
-        {...register("username", {
-          required: true,
-          pattern: new RegExp(/^[\w ]+$/),
-        })} // regex for userName - allow letters and numbers and "_"
-        aria-label="username"
-      />
       {errors?.username?.type === "pattern" && (
         <span>Only letters, numbers, "_" allowed</span>
       )}

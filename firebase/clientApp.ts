@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import firebase, { initializeApp } from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -11,8 +11,10 @@ const clientCredentials = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 }
 
-if(!firebase.getApp.length) {
-    firebase.initializeApp(clientCredentials);
-}
+// initialize firebase
+export const app = initializeApp(clientCredentials);
 
-export default firebase;
+// export function to initialize firebase
+export const initFirebase = () => {
+    return app;
+}

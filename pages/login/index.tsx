@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function LoginPage(): JSX.Element {
   const { register, handleSubmit } = useForm();
